@@ -130,10 +130,10 @@ function randomHole() { // 번호 랜덤 생성
         hole.innerHTML = '';
     });
 
-    let randomIndex = Math.floor(Math.random() * holes.length);
-    let randomHole = holes[randomIndex];
+    var randomIndex = Math.floor(Math.random() * holes.length);
+    var randomHole = holes[randomIndex];
 
-    const imgElement = document.createElement('img'); 
+    var imgElement = document.createElement('img'); 
     imgElement.src = img.src; 
     imgElement.width = img.width; 
     imgElement.height = img.height;
@@ -150,7 +150,7 @@ function randomHole() { // 번호 랜덤 생성
 
 function handleMoleClick(event) { // 두더지를 클릭했을때
    
-    const moleElement = this;
+    var moleElement = this;
 
     clicked = true;
     if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
@@ -206,7 +206,7 @@ var timerId;
 
 function moveMole() { // 점수가 높아질수록 빨라짐
 
-    let interval = 3000; 
+    var interval = 3000; 
 
     if (result > 2000) {
         interval = 500; 
