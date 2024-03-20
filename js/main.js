@@ -11,7 +11,7 @@ audio.play();
 window.onload = function() {
     var storedBestScore = localStorage.getItem('bestScore');
 
-    if(storedBestScore === null){
+    if(storedBestScore === null || isNaN(storedBestScore)){
         storedBestScore = 0;
     }
     else{
@@ -31,7 +31,7 @@ var bestScoreElement = document.getElementById('bestScore').innerHTML;
 var bestScoreText = document.getElementById('final-bestScore').innerHTML;
 var bestScore = localStorage.getItem('bestScore');
 
-if(bestScore === null){
+if(bestScore === null || isNaN(bestScore)){
     bestScore = 0;
 }else{
     bestScore = parseInt(bestScore);
@@ -70,13 +70,17 @@ function closePage(){
     clearTimeout(timerId);
     requestId = 'GM-007';
     loadPage(requestId);
+
+    var modalPage = document.getElementById('modalPage');
+    modalPage.classList.removeClass('display-none');
 }
 
 function continueGame(){
     score.textContent = 'SCORE ' + result;
-    document.querySelector('#modalPage').classList.add('display-none');
+    document.getElementById('modalPage').classList.add('display-none');
     moveMole(); 
 }
+
 function loseScore(){
     bestScore = 0;
     storedBestScore = 0;
@@ -126,10 +130,16 @@ img.height = "150";
 
 function randomHole() { // 번호 랜덤 생성
 
+    /*
     holes.forEach(function (hole) {
         hole.innerHTML = '';
     });
-
+    */
+   
+    for (var i = 0; i < holes.length; i++) {
+        holes[i].innerHTML = '';
+    }
+    
     var randomIndex = Math.floor(Math.random() * holes.length);
     var randomHole = holes[randomIndex];
 
@@ -196,11 +206,18 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         gameOver();
     }
 }
-
+/*
 holes.forEach(function(hole) {
     clicked = true;
     hole.addEventListener('click', handleMoleClick);
 });
+*/
+
+for (var i = 0; i < holes.length; i++) {
+    var hole = holes[i];
+    clicked = true;
+    hole.addEventListener('click', handleMoleClick);
+}
 
 var timerId;
 
