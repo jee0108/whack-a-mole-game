@@ -102,6 +102,10 @@ function startGame(){
 }
 
 function gameOver(){
+    for (var i = 0; i < holes.length; i++) {//두더지 클릭 못하게
+        holes[i].removeEventListener('click', handleMoleClick);
+    }
+
     gameEnded = true;
 
     var audio3 = new Audio('../sound/blip01.mp3'); //효과음
@@ -116,10 +120,7 @@ function gameOver(){
      document.getElementById('final-bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
 
      document.getElementById('bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
-     //console.log(finalScore);
-     for (var i = 0; i < holes.length; i++) {//두더지 클릭 못하게
-        holes[i].removeEventListener('click', handleMoleClick);
-    }
+     //console.log(finalScore); 
 }
 
 function missMole(){
@@ -233,6 +234,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
                 }, 250);
                 
             }
+            gameEnded = true;
             clicked = true;
             moveMole();
         }
