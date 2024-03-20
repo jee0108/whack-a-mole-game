@@ -22,10 +22,10 @@ window.onload = function() {
 
 };
 
-const scoreElement = document.getElementById('score').innerHTML;
+var scoreElement = document.getElementById('score').innerHTML;
 
 // 기본 bestScore
-const bestScoreElement = document.getElementById('bestScore').innerHTML;
+var bestScoreElement = document.getElementById('bestScore').innerHTML;
 
 // 모달창 bestScore
 var bestScoreText = document.getElementById('final-bestScore').innerHTML;
@@ -37,8 +37,8 @@ if(bestScore === null){
     bestScore = parseInt(bestScore);
 }
 
-const holes = document.querySelectorAll('.hole');
-const score = document.querySelector('#score');
+var holes = document.querySelectorAll('.hole');
+var score = document.querySelector('#score');
 
 function loadPage(requestId){
 
@@ -117,16 +117,16 @@ function missMole(){
     gameOver();
 }
 
-let result = 0;
+var result = 0;
 
-const img = new Image();
+var img = new Image();
 img.src = "../img/mole1-removebg-preview.png";
 img.width = "150";
 img.height = "150";
 
 function randomHole() { // 번호 랜덤 생성
 
-    holes.forEach(hole => {
+    holes.forEach(function (hole) {
         hole.innerHTML = '';
     });
 
@@ -167,7 +167,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         }
         //console.log("현재 점수: " + result);
 
-        const imgElement2 = new Image(); 
+        var imgElement2 = new Image(); 
         imgElement2.src = "../img/mole2-removebg-preview.png"; 
         imgElement2.width = "150"; 
         imgElement2.height = "150"; 
@@ -176,7 +176,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         imgElement2.style.left = '22%';
         imgElement2.style.bottom = '90%';
 
-        const currentImage = moleElement.querySelector('img');
+        var currentImage = moleElement.querySelector('img');
         moleElement.removeEventListener('click', handleMoleClick);
 
         if (currentImage) {
@@ -197,7 +197,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
     }
 }
 
-holes.forEach(hole => {
+holes.forEach(function(hole) {
     clicked = true;
     hole.addEventListener('click', handleMoleClick);
 });
@@ -220,7 +220,7 @@ function moveMole() { // 점수가 높아질수록 빨라짐
 
     clearInterval(timerId);
 
-    timerId = setInterval(() => {
+    timerId = setInterval(function() {
 
     if(!clicked){
         missMole();
