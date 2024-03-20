@@ -1,6 +1,7 @@
 var requestId;
 var html ;
-var clicked = false; 
+var clicked = false;
+var gameEnded = false; 
 
 //배경음
 var audio = new Audio('../sound/cruising-down-8bit-lane-159615.mp3');
@@ -101,6 +102,8 @@ function startGame(){
 }
 
 function gameOver(){
+    gameEnded = true;
+
     var audio3 = new Audio('../sound/blip01.mp3'); //효과음
     audio3.play();
      clearInterval(timerId);
@@ -114,6 +117,9 @@ function gameOver(){
 
      document.getElementById('bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
      //console.log(finalScore);
+     for (var i = 0; i < holes.length; i++) {//두더지 클릭 못하게
+        holes[i].removeEventListener('click', handleMoleClick);
+    }
 }
 
 function missMole(){
@@ -188,47 +194,48 @@ function randomHole() { // 번호 랜덤 생성
 
 function handleMoleClick(event) { // 두더지를 클릭했을때
    
-    var moleElement = this;
+    if(!clicked && !gameEnded){
+        var moleElement = this;
+        
+        //clicked = true;
+        if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
 
-    clicked = true;
-    if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
+            var audio2 = new Audio('../sound/flying_pan.mp3'); //효과음
+            audio2.play();
 
-        var audio2 = new Audio('../sound/flying_pan.mp3'); //효과음
-        audio2.play();
+            result += 100;
+            score.textContent = 'SCORE '+ result;
 
-        result += 100;
-        score.textContent = 'SCORE '+ result;
+            if(result >= bestScore){
+                bestScore = result;
+                bestScoreText.innerHTML = 'BEST SCORE : ' + bestScore;
+            }
+            //console.log("현재 점수: " + result);
 
-        if(result >= bestScore){
-            bestScore = result;
-            bestScoreText.innerHTML = 'BEST SCORE : ' + bestScore;
+            var imgElement2 = new Image(); 
+            imgElement2.src = "../img/mole2-removebg-preview.png"; 
+            imgElement2.width = "150"; 
+            imgElement2.height = "150"; 
+        
+            imgElement2.style.position = 'relative';
+            imgElement2.style.left = '22%';
+            imgElement2.style.bottom = '90%';
+
+            var currentImage = moleElement.querySelector('img');
+            moleElement.removeEventListener('click', handleMoleClick);
+
+            if (currentImage) {
+                moleElement.replaceChild(imgElement2, currentImage);
+                
+                setTimeout(function() {
+                    moleElement.removeChild(imgElement2);
+                    moleElement.addEventListener('click', handleMoleClick);
+                }, 250);
+                
+            }
+            clicked = true;
+            moveMole();
         }
-        //console.log("현재 점수: " + result);
-
-        var imgElement2 = new Image(); 
-        imgElement2.src = "../img/mole2-removebg-preview.png"; 
-        imgElement2.width = "150"; 
-        imgElement2.height = "150"; 
-    
-        imgElement2.style.position = 'relative';
-        imgElement2.style.left = '22%';
-        imgElement2.style.bottom = '90%';
-
-        var currentImage = moleElement.querySelector('img');
-        moleElement.removeEventListener('click', handleMoleClick);
-
-        if (currentImage) {
-            moleElement.replaceChild(imgElement2, currentImage);
-            
-            setTimeout(function() {
-                moleElement.removeChild(imgElement2);
-                moleElement.addEventListener('click', handleMoleClick);
-            }, 250);
-            
-        }
-
-        moveMole();
-        clicked = true;
     }
     /*
     else{
