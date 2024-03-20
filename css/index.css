@@ -1,0 +1,43 @@
+
+#main{
+    height: 900px;
+    width: 1200px;
+    margin: auto;
+    margin-top: 200px;
+    display:flex; 
+    justify-content:center; 
+    align-items:center;
+    border: 2px solid black;
+}
+.wrap{
+    border: 1px solid rgb(26, 25, 25);
+    height: 750px;
+    width: 900px;
+    border-radius: 100px;
+}
+
+.mainText{
+    text-align: center;
+    height: 100px;
+    font-size: 40px;
+    margin-top: 80px;
+}
+
+#bottom{
+    border-radius: 20px;
+    border : 1px solid black; 
+    width: 700px; 
+    height:  250px;
+    margin: auto;
+    margin-top: 100px;
+}
+#gameBtn{   
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    font-size: 50px;
+    text-align: center;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>두더지를 잡아라!</title>
+    <link rel="stylesheet" href="../css/gameStart.css" />
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    
+    <div id="main">
+
+        <div id="gameContent">
+
+            <div id="scoreList">
+                <p id="score">SCORE&nbsp; &nbsp; 0</p>
+                <p id="bestScore">BEST SCORE : 0</p>
+            </div>
+            <div id="close" onclick="closePage();">×</div>
+            
+            <div id="modalPage" class="display-first display-none">
+                <div class="textSize">WARNING!</div>
+                <br><br>
+                <div class="textSize">점수를 모두 잃게 됩니다. <br>그래도 나가시겠습니까?</div>
+
+                <br><br><br>
+                <button class="modalBtn" type="button" onclick="mainPage();">OK</button>
+                <button class="modalBtn" type="button" onclick="continueGame();">NO</button>
+            </div>
+
+            <div id="modalPage2" class="display-first display-none">
+                <div class="gameOver">GAME OVER!</div>
+                <br><br>
+                <div class="score-text" id="final-score">SCORE : 0</div>
+                <div class="best-text" id="final-bestScore">BEST SCORE : 0</div>
+
+                <br><br><br>
+                <button class="modalBtn" type="button" onclick="loseScore();">OK</button>
+                <button class="modalBtn" type="button" onclick="mainPage();">NO</button>
+            </div>
+
+            <div id="content">
+
+                <div class="whack-a-mole">
+                    <div class="boxList box">
+                        <div class="hole hole1" id="1"></div>
+                    </div>
+                    <div class="boxList box">
+                        <div class="hole hole2" id="2"></div>
+                    </div>
+                    
+                    <div class="boxList box">
+                        <div class="hole hole3" id="3"></div>
+                    </div>
+
+                    <div class="boxList box">
+                        <div class="hole hole4" id="4"></div>
+                    </div>
+                    
+                    <div class="boxList box">
+                        <div class="hole hole5" id="5"></div>
+                    </div>
+                    
+                    <div class="boxList box">
+                        <div class="hole hole6" id="6"></div>
+                    </div>
+
+                    <div class="boxList box">
+                        <div class="hole hole7" id="7"></div>
+                    </div>
+
+                    <div class="boxList box">
+                        <div class="hole hole8" id="8"></div>
+                    </div>
+
+                    <div class="boxList box">
+                        <div class="hole hole9" id="9"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+            
+    </div>
+    <script tyle="test/javascript" src="../js/main.js"></script>
+</body>
+</html>
