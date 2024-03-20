@@ -55,7 +55,6 @@ function loadPage(requestId){
     if (requestId !== 'lose') {
         localStorage.setItem('bestScore', bestScore);
     }
-
     location.href= html;
 }
 
