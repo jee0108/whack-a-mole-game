@@ -146,6 +146,8 @@ function missMole(){
     setTimeout(function() {
         gameOver();
     }, 500);
+
+    
 }
 
 var result = 0;
