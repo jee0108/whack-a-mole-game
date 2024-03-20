@@ -125,17 +125,34 @@
     text-align: center;
 }
 
-@keyframes moleEnter {
+@-webkit-keyframes moleEnter {
     0% {
         opacity: 1;
+        -webkit-transform: translateY(0);
         transform: translateY(0);
     }
     100% {
         opacity: 0;
+        -webkit-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+}
+
+@-ms-keyframes moleEnter {
+    0% {
+        opacity: 1;
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -ms-transform: translateY(50%);
         transform: translateY(50%);
     }
 }
 
 .mole-enter {
     animation: moleEnter 1s forwards;
+    -webkit-animation: moleEnter 1s forwards;
+    -ms-animation: moleEnter 1s forwards;
 }
