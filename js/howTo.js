@@ -35,7 +35,7 @@ function loadPage(requestId){
 
 
 window.onload = function() {
-    let storedBestScore = localStorage.getItem('bestScore');
+    var storedBestScore = localStorage.getItem('bestScore');
     //console.log('storedBestScore : '+storedBestScore);
     document.getElementById('chageBestScore').innerHTML = 'BEST SCORE : ' + (storedBestScore ? storedBestScore : 0);
 };

@@ -9,7 +9,7 @@ audio.loop = true;
 audio.play();
 
 window.onload = function() {
-    let storedBestScore = localStorage.getItem('bestScore');
+    var storedBestScore = localStorage.getItem('bestScore');
 
     if(storedBestScore === null){
         storedBestScore = 0;
@@ -182,7 +182,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         if (currentImage) {
             moleElement.replaceChild(imgElement2, currentImage);
             
-            setTimeout(() => {
+            setTimeout(function() {
                 moleElement.removeChild(imgElement2);
                 moleElement.addEventListener('click', handleMoleClick);
             }, 250);
