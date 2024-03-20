@@ -117,8 +117,35 @@ function gameOver(){
 }
 
 function missMole(){
-    clearInterval(timerId); 
+    clearInterval(timerId);
+    var moleHole = document.getElementById(hitPosition);
+    var moleImage = moleHole.querySelector('img');
+    if (moleImage) {
+        moleHole.removeChild(moleImage);
+    }
+    /*
+    var gameOverImage = new Image();
+    gameOverImage.src = "../img/gameOver.png"; // 두더지가 땅굴로 들어가는 이미지
+    gameOverImage.width = "130";
+    gameOverImage.height = "10";
+
+    gameOverImage.style.position = 'relative';
+    gameOverImage.style.left = '25%';
+    gameOverImage.style.bottom = '0%';
+    
+    moleHole.appendChild(gameOverImage);
+    setTimeout(function() {
+        gameOver();
+    }, 1000);
     gameOver();
+    */
+    var moleImage = moleHole.querySelector('img');
+    if (moleImage) {
+        moleImage.classList.add('mole-enter'); 
+    }
+    setTimeout(function() {
+        gameOver();
+    }, 500);
 }
 
 var result = 0;
@@ -155,6 +182,7 @@ function randomHole() { // 번호 랜덤 생성
     randomHole.appendChild(imgElement); 
 
     hitPosition = randomHole.id;
+
     clicked = false;    // 두더지를 놓쳤을 경우
 }
 
@@ -202,9 +230,11 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         moveMole();
         clicked = true;
     }
+    /*
     else{
         gameOver();
     }
+    */
 }
 /*
 holes.forEach(function(hole) {

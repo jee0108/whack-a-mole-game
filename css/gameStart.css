@@ -124,3 +124,18 @@
     font-size: 30px;
     text-align: center;
 }
+
+@keyframes moleEnter {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+}
+
+.mole-enter {
+    animation: moleEnter 1s forwards;
+}

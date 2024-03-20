@@ -3,11 +3,17 @@ var html ;
 
 var bestScoreText = document.getElementById('chageBestScore').innerHTML;
 var bestScore = localStorage.getItem('bestScore') || 0;
-
+/*
 if(bestScore === 'null'){
     bestScore = 0;
 }else{
     bestScore = localStorage.getItem('bestScore');
+}
+*/
+if(bestScore === null || isNaN(bestScore)){
+    bestScore = 0;
+}else{
+    bestScore = parseInt(bestScore);
 }
 
 function loadPage(requestId){
@@ -36,8 +42,18 @@ function loadPage(requestId){
 
 window.onload = function() {
     var storedBestScore = localStorage.getItem('bestScore');
+
+    if(storedBestScore === null || isNaN(storedBestScore)){
+        storedBestScore = 0;
+    }
+    else{
+        document.getElementById('chageBestScore').innerHTML = 'BEST SCORE : ' + (storedBestScore ? storedBestScore : 0);
+    }
+    /*
+    var storedBestScore = localStorage.getItem('bestScore');
     //console.log('storedBestScore : '+storedBestScore);
     document.getElementById('chageBestScore').innerHTML = 'BEST SCORE : ' + (storedBestScore ? storedBestScore : 0);
+    */
 };
 
 function ready(){
