@@ -97,6 +97,8 @@ function startGame(){
 }
 
 function gameOver(){
+    var audio3 = new Audio('../sound/blip01.mp3'); //효과음
+    audio3.play();
      clearInterval(timerId);
      //console.log("게임오버");
      requestId = 'GM-006';
@@ -153,8 +155,8 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
     clicked = true;
     if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
 
-        var audio = new Audio('../sound/flying_pan.mp3'); //효과음
-        audio.play();
+        var audio2 = new Audio('../sound/flying_pan.mp3'); //효과음
+        audio2.play();
 
         result += 100;
         score.textContent = 'SCORE '+ result;

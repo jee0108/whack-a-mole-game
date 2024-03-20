@@ -57,6 +57,7 @@
     height: 100px;
     font-size: 50px;
     text-align: right;
+    cursor: pointer;
 }
 #start{
     font-size: 50px;
@@ -89,6 +90,18 @@
     text-align: center;
     margin-left: 65px;
     margin-right: 40px;
+    cursor: pointer;
+}
+.modalBtn2{
+    background-color: white;
+    width: 80px;
+    height: 40px;
+    font-size: 50px;
+    text-align: center;
+    margin-left: 65px;
+    margin-right: 40px;
+    border: none;
+    cursor: pointer;
 }
 .box{
     position: relative
