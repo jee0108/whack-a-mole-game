@@ -2,6 +2,12 @@ var requestId;
 var html ;
 var clicked = false; 
 
+//배경음
+var audio = new Audio('../sound/cruising-down-8bit-lane-159615.mp3');
+audio.autoplay = true;
+audio.loop = true;
+audio.play();
+
 window.onload = function() {
     let storedBestScore = localStorage.getItem('bestScore');
 
@@ -17,11 +23,9 @@ window.onload = function() {
 };
 
 const scoreElement = document.getElementById('score').innerHTML;
-var scoreElementNum = parseInt(scoreElement.replace('SCORE&nbsp; &nbsp;', ''));
 
 // 기본 bestScore
 const bestScoreElement = document.getElementById('bestScore').innerHTML;
-var bestScoreElementNum = parseInt(bestScoreElement.replace('BEST SCORE : ', ''));
 
 // 모달창 bestScore
 var bestScoreText = document.getElementById('final-bestScore').innerHTML;
@@ -38,7 +42,7 @@ const score = document.querySelector('#score');
 
 function loadPage(requestId){
 
-    if(requestId === 'GM-001'){
+    if(requestId === 'GM-001'|| requestId === 'lose'){
         html = 'index.html';
     }
     else if(requestId === 'GM-002'){
@@ -51,7 +55,6 @@ function loadPage(requestId){
     else if(requestId === 'GM-008'){
         html = 'howTo.html';
     }
-
     if (requestId !== 'lose') {
         localStorage.setItem('bestScore', bestScore);
     }
@@ -78,6 +81,7 @@ function loseScore(){
     bestScore = 0;
     storedBestScore = 0;
     result = 0;
+
     requestId = 'lose';
     loadPage(requestId);
 }
@@ -139,13 +143,19 @@ function randomHole() { // 번호 랜덤 생성
     randomHole.appendChild(imgElement); 
 
     hitPosition = randomHole.id;
+    clicked = false;    // 두더지를 놓쳤을 경우
 }
 
 function handleMoleClick(event) { // 두더지를 클릭했을때
    
     const moleElement = this;
 
+    clicked = true;
     if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
+
+        var audio = new Audio('../sound/flying_pan.mp3'); //효과음
+        audio.play();
+
         result += 100;
         score.textContent = 'SCORE '+ result;
 
@@ -153,7 +163,6 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
             bestScore = result;
             bestScoreText.innerHTML = 'BEST SCORE : ' + bestScore;
         }
-
         //console.log("현재 점수: " + result);
 
         const imgElement2 = new Image(); 
