@@ -3,13 +3,7 @@ var html ;
 
 var bestScoreText = document.getElementById('chageBestScore').innerHTML;
 var bestScore = localStorage.getItem('bestScore') || 0;
-/*
-if(bestScore === 'null'){
-    bestScore = 0;
-}else{
-    bestScore = localStorage.getItem('bestScore');
-}
-*/
+
 if(bestScore === null || isNaN(bestScore)){
     bestScore = 0;
 }else{
@@ -49,11 +43,7 @@ window.onload = function() {
     else{
         document.getElementById('chageBestScore').innerHTML = 'BEST SCORE : ' + (storedBestScore ? storedBestScore : 0);
     }
-    /*
-    var storedBestScore = localStorage.getItem('bestScore');
-    //console.log('storedBestScore : '+storedBestScore);
-    document.getElementById('chageBestScore').innerHTML = 'BEST SCORE : ' + (storedBestScore ? storedBestScore : 0);
-    */
+
 };
 
 function ready(){
@@ -73,15 +63,14 @@ function startGame(){
 
 function gameOver(){
     clearInterval(timerId);
-    //console.log("게임오버");
+
     requestId = 'GM-006';
-    //document.getElementById('modalPage2').removeClass('display-none');
+
     $("#modalPage2").removeClass('display-none');
 
     document.getElementById('score').innerHTML = 'SCORE : '+ result;
     document.getElementById('chageBestScore').innerHTML = bestScore;
 
-    //console.log(finalScore);
 }
 
 

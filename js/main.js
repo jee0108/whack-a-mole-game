@@ -12,13 +12,6 @@ audio.play();
 var audio2;
 
 window.onload = function() {
-    audio.currentTime = 0;
-    audio.pause();
-
-    audio2.currentTime = 0;
-    audio2.pause();
-
-
     var storedBestScore = localStorage.getItem('bestScore');
 
     if(storedBestScore === null || isNaN(storedBestScore)){
@@ -41,7 +34,6 @@ if(bestScore === null || isNaN(bestScore)){
 }else{
     bestScore = parseInt(bestScore);
 }
-
 
 var holes = document.getElementsByClassName('hole');
 holes = Array.prototype.slice.call(holes);
@@ -125,7 +117,6 @@ function gameOver(){
     requestId = 'GM-006';
 
     document.querySelector('#modalPage2').classList.remove('display-none');
-    //$("#modalPage2").removeClass('display-none');
 
     document.getElementById('final-score').innerHTML = 'SCORE : '+ result;
     document.getElementById('final-bestScore').innerHTML =  'BEST SCORE : ' + bestScore;

@@ -25,11 +25,6 @@ function mainPage(){
     loadPage(requestId);
 }
 
-function startGame(){
-    requestId = 'GM-002';
-    loadPage(requestId);
-}
-
 function ready(){
     requestId = 'GM-008';
     loadPage(requestId);
