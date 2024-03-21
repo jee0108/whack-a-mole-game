@@ -4,6 +4,7 @@ var clicked = false;
 var gameEnded = false;
 var timerId;
 
+var audio = null;
 var audio=  new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
     audio.pause();
     audio.autoplay = true;

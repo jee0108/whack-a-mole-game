@@ -72,4 +72,6 @@
     font-size: 50px;
     text-align: center;
     cursor: pointer;
+    margin: auto;
+    width: 50px;
 }
