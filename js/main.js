@@ -64,7 +64,12 @@ function loadPage(requestId){
 }
 
 function ready(){
+    audio=  new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
+    audio.pause();
+    audio.autoplay = true;
+    audio.loop = true;
     audio.play();
+
     requestId = 'GM-008';
     loadPage(requestId);
 }
@@ -116,6 +121,7 @@ function mainPage(){
 
 function startGame(){
     audio=  new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
+    audio.pause();
     audio.autoplay = true;
     audio.loop = true;
     audio.play();
@@ -230,10 +236,13 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
                 return; // 오디오가 재생 중인 경우 클릭 이벤트 처리 중단
             }
             */
+           /*
             if (!audio2.paused) {
                 audio2.pause(); // 현재 재생 중인 소리 일시 정지
             }
+            */
             audio2 = new Audio('../sound/flying_pan.mp3'); // 두더지 잡았을때 효과음
+            audio2.pause();
             audio2.play();
 
             result += 100;
