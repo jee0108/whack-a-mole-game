@@ -4,6 +4,8 @@ var clicked = false;
 var gameEnded = false;
 
 var audio = new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
+audio.loop = true;
+
 var audio2 = new Audio('../sound/flying_pan.mp3'); // 두더지 잡았을때 효과음
 
 window.onload = function() {
@@ -60,6 +62,9 @@ function loadPage(requestId){
 }
 
 function ready(){
+    if (audio.paused) {
+        audio.play();
+    }
     requestId = 'GM-008';
     loadPage(requestId);
 }
@@ -68,6 +73,7 @@ function closePage(){
     clearTimeout(timerId);
     requestId = 'GM-007';
     loadPage(requestId);
+
     gameEnded = true;
     var modalPage = document.getElementById('modalPage');
 
@@ -82,6 +88,8 @@ function continueGame(){
 }
 
 function loseScore(){
+    audio.pause();
+
     bestScore = 0;
     storedBestScore = 0;
     result = 0;
@@ -91,16 +99,16 @@ function loseScore(){
 }
 
 function mainPage(){
+    audio.pause();
+    
     requestId = 'GM-001';
     loadPage(requestId);
 }
 
 function startGame(){
-    //배경음
-    audio.autoplay = true;
-    audio.loop = true;
-    audio.play();
-
+    if (audio.paused) {
+        audio.play();
+    }
     requestId = 'GM-002';
     loadPage(requestId);
 }
