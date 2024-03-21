@@ -262,8 +262,11 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
             clicked = true;
             moveMole();
 
+            setTimeout(function () {
+                audio2.pause();
+            }, 450);
         }
-        audio2.pause();
+        
     }
     /*
     else{
