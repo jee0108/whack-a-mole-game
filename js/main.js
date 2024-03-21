@@ -10,6 +10,7 @@ audio.loop = true;
 audio.play();
 
 var audio2 = new Audio('../sound/flying_pan.mp3'); // 두더지 잡았을때 효과음
+audio2.loop = true;
 
 window.onload = function() {
     var storedBestScore = localStorage.getItem('bestScore');
@@ -216,15 +217,16 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
 
             /*
-            if(!audio2.paused){
-                return;
-            }
-            
-           // 오디오가 재생 중인지 확인
+            // 오디오가 재생 중인지 확인
             if (audio2.currentTime > 0 && !audio2.paused && !audio2.ended) {
                 return; // 오디오가 재생 중인 경우 클릭 이벤트 처리 중단
             }
             */
+            if (!audio2.paused) {
+                audio2.pause(); // 현재 재생 중인 소리 일시 정지
+            }
+            audio2.currentTime = 0;
+
             audio2.play();
 
             result += 100;
