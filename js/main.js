@@ -126,16 +126,15 @@ function gameOver(){
 
     var audio3 = new Audio('../sound/blip01.mp3'); //효과음
     audio3.play();
-     clearInterval(timerId);
+    clearInterval(timerId);
 
-     requestId = 'GM-006';
+    requestId = 'GM-006';
 
-     $("#modalPage2").removeClass('display-none');
+    $("#modalPage2").removeClass('display-none');
 
-     document.getElementById('final-score').innerHTML = 'SCORE : '+ result;
-     document.getElementById('final-bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
-     document.getElementById('bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
-
+    document.getElementById('final-score').innerHTML = 'SCORE : '+ result;
+    document.getElementById('final-bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
+    document.getElementById('bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
 }
 
 function missMole(){
