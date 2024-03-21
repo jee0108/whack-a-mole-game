@@ -2,6 +2,7 @@ var requestId;
 var html ;
 var clicked = false;
 var gameEnded = false;
+var timerId;
 
 var audio = new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
 audio.autoplay = true;
@@ -40,6 +41,7 @@ if(bestScore === null || isNaN(bestScore)){
 }
 
 var holes = document.getElementsByClassName('hole');
+holes = Array.prototype.slice.call(holes);
 var score = document.getElementById('score');
 
 function loadPage(requestId){
@@ -89,6 +91,7 @@ function continueGame(){
 
 function loseScore(){
     audio.pause();
+    audio = null;
 
     bestScore = 0;
     storedBestScore = 0;
@@ -100,6 +103,7 @@ function loseScore(){
 
 function mainPage(){
     audio.pause();
+    audio = null;
     
     requestId = 'GM-001';
     loadPage(requestId);
@@ -270,9 +274,8 @@ for (var i = 0; i < holes.length; i++) {
     var hole = holes[i];
     clicked = true;
     hole.addEventListener('click', handleMoleClick);
+    //hole.attachEvent('onclick', handleMoleClick);
 }
-
-var timerId;
 
 function moveMole() { // 점수가 높아질수록 빨라짐
 

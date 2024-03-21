@@ -135,7 +135,7 @@
 #warning{
     margin-top: 20px;
 }
-
+/*
 @-webkit-keyframes moleEnter {
     0% {
         opacity: 1;
@@ -161,7 +161,17 @@
         transform: translateY(50%);
     }
 }
-
+*/
+@keyframes moleEnter {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+}
 .mole-enter {
     animation: moleEnter 1s forwards;
     -webkit-animation: moleEnter 1s forwards;
