@@ -215,9 +215,16 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         //clicked = true;
         if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
 
+            /*
             if(!audio2.paused){
                 return;
             }
+            
+           // 오디오가 재생 중인지 확인
+            if (audio2.currentTime > 0 && !audio2.paused && !audio2.ended) {
+                return; // 오디오가 재생 중인 경우 클릭 이벤트 처리 중단
+            }
+            */
             audio2.play();
 
             result += 100;
@@ -253,10 +260,10 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
 
             gameEnded = false;
             clicked = true;
-            audio.pause();
             moveMole();
 
         }
+        audio2.pause();
     }
     /*
     else{
