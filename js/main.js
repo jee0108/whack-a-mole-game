@@ -10,7 +10,6 @@ audio.loop = true;
 audio.play();
 
 var audio2 = new Audio('../sound/flying_pan.mp3'); // 두더지 잡았을때 효과음
-audio2.loop = true;
 
 window.onload = function() {
     var storedBestScore = localStorage.getItem('bestScore');
