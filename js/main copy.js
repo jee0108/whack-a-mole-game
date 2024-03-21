@@ -4,8 +4,14 @@ var clicked = false;
 var gameEnded = false;
 var timerId;
 
-var audio = document.getElementById('audio');
-var audio2 = document.getElementById('audio2');
+var audio = null;
+var audio=  new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
+    audio.pause();
+    audio.autoplay = true;
+    audio.loop = true;
+    audio.play();
+
+var audio2;
 
 window.onload = function() {
     var storedBestScore = localStorage.getItem('bestScore');
@@ -14,7 +20,7 @@ window.onload = function() {
         storedBestScore = 0;
     }
     else{
-
+        //console.log('storedBestScore : '+storedBestScore);
         document.getElementById('final-bestScore').innerHTML = 'BEST SCORE : ' + storedBestScore;
         document.getElementById('bestScore').innerHTML = 'BEST SCORE : ' +  storedBestScore;
     }
@@ -93,6 +99,7 @@ function continueGame(){
 
 function loseScore(){
     audio.pause();
+    audio = null;
 
     bestScore = 0;
     storedBestScore = 0;
@@ -104,12 +111,17 @@ function loseScore(){
 
 function mainPage(){
     audio.pause();
+    audio = null;
     
     requestId = 'GM-001';
     loadPage(requestId);
 }
 
 function startGame(){
+    audio=  new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
+    audio.pause();
+    audio.autoplay = true;
+    audio.loop = true;
     audio.play();
 
     requestId = 'GM-002';
@@ -127,15 +139,16 @@ function gameOver(){
     var audio3 = new Audio('../sound/blip01.mp3'); //효과음
     audio3.play();
      clearInterval(timerId);
-
+     //console.log("게임오버");
      requestId = 'GM-006';
-
+     //document.getElementById('modalPage2').removeClass('display-none');
      $("#modalPage2").removeClass('display-none');
 
      document.getElementById('final-score').innerHTML = 'SCORE : '+ result;
      document.getElementById('final-bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
-     document.getElementById('bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
 
+     document.getElementById('bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
+     //console.log(finalScore); 
 }
 
 function missMole(){
@@ -145,7 +158,22 @@ function missMole(){
     if (moleImage) {
         moleHole.removeChild(moleImage);
     }
+    /*
+    var gameOverImage = new Image();
+    gameOverImage.src = "../img/gameOver.png"; // 두더지가 땅굴로 들어가는 이미지
+    gameOverImage.width = "130";
+    gameOverImage.height = "10";
 
+    gameOverImage.style.position = 'relative';
+    gameOverImage.style.left = '25%';
+    gameOverImage.style.bottom = '0%';
+    
+    moleHole.appendChild(gameOverImage);
+    setTimeout(function() {
+        gameOver();
+    }, 1000);
+    gameOver();
+    */
     var moleImage = moleHole.querySelector('img');
     if (moleImage) {
         moleImage.classList.add('mole-enter'); 
@@ -163,6 +191,11 @@ img.width = "150";
 img.height = "150";
 
 function randomHole() { // 번호 랜덤 생성
+    /*
+    holes.forEach(function (hole) {
+        hole.innerHTML = '';
+    });
+    */
    
     for (var i = 0; i < holes.length; i++) {
         holes[i].innerHTML = '';
@@ -192,8 +225,21 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
     if(!clicked && !gameEnded){
         var moleElement = this;
         
+        //clicked = true;
         if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
 
+            /*
+            // 오디오가 재생 중인지 확인
+            if (audio2.currentTime > 0 && !audio2.paused && !audio2.ended) {
+                return; // 오디오가 재생 중인 경우 클릭 이벤트 처리 중단
+            }
+            */
+           /*
+            if (!audio2.paused) {
+                audio2.pause(); // 현재 재생 중인 소리 일시 정지
+            }
+            */
+            var audio2 = new Audio('../sound/flying_pan.mp3'); // 두더지 잡았을때 효과음
             audio2.play();
 
             result += 100;
@@ -203,6 +249,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
                 bestScore = result;
                 bestScoreText.innerHTML = 'BEST SCORE : ' + bestScore;
             }
+            //console.log("현재 점수: " + result);
 
             var imgElement2 = new Image(); 
             imgElement2.src = "../img/mole2-removebg-preview.png"; 
@@ -236,14 +283,24 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         }
         
     }
-
+    /*
+    else{
+        gameOver();
+    }
+    */
 }
-
+/*
+holes.forEach(function(hole) {
+    clicked = true;
+    hole.addEventListener('click', handleMoleClick);
+});
+*/
 
 for (var i = 0; i < holes.length; i++) {
     var hole = holes[i];
     clicked = true;
     hole.addEventListener('click', handleMoleClick);
+    //hole.attachEvent('onclick', handleMoleClick);
 }
 
 function moveMole() { // 점수가 높아질수록 빨라짐
