@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/gameStart.css" />
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <body>
     
     <div id="main">
@@ -17,10 +18,10 @@
                 <p id="score">SCORE&nbsp; &nbsp; 0</p>
                 <p id="bestScore">BEST SCORE : 0</p>
             </div>
-            <div id="close" onclick="closePage();">×</div>
+            <div id="close" onclick="closePage();">✕</div>
             
             <div id="modalPage" class="display-first display-none">
-                <div class="textSize">WARNING!</div>
+                <div class="textSize" id="warning">WARNING!</div>
                 <br><br>
                 <div class="textSize">점수를 모두 잃게 됩니다. <br>그래도 나가시겠습니까?</div>
 
@@ -37,7 +38,7 @@
 
                 <br><br><br>
                 <button class="modalBtn2" type="button" onclick="ready();">↻</button>
-                <button class="modalBtn2" type="button" onclick="mainPage();">×</button>
+                <button class="modalBtn2" type="button" onclick="mainPage();">✕</button>
             </div>
 
             <div id="content">

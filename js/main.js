@@ -71,12 +71,14 @@ function closePage(){
     clearTimeout(timerId);
     requestId = 'GM-007';
     loadPage(requestId);
-
+    gameEnded = true;
     var modalPage = document.getElementById('modalPage');
-    modalPage.classList.removeClass('display-none');
+
+    modalPage.classList.remove('display-none');
 }
 
 function continueGame(){
+    gameEnded = false;
     score.textContent = 'SCORE ' + result;
     document.getElementById('modalPage').classList.add('display-none');
     moveMole(); 
@@ -234,7 +236,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
                 }, 250);
                 
             }
-            gameEnded = true;
+            gameEnded = false;
             clicked = true;
             moveMole();
         }
