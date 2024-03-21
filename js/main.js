@@ -40,6 +40,7 @@ if(bestScore === null || isNaN(bestScore)){
     bestScore = parseInt(bestScore);
 }
 
+
 var holes = document.getElementsByClassName('hole');
 holes = Array.prototype.slice.call(holes);
 var score = document.getElementById('score');
@@ -84,7 +85,14 @@ function closePage(){
 
 function continueGame(){
     gameEnded = false;
-    score.textContent = 'SCORE ' + result;
+    if(result == 0){
+        score.innerHTML = 'SCORE ' + result;
+    }
+    else{
+        score.textContent = 'SCORE ' + result;
+    }
+    
+
     document.getElementById('modalPage').classList.add('display-none');
     moveMole(); 
 }
