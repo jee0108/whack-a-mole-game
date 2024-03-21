@@ -2,10 +2,19 @@
     height: 900px;
     width: 1200px;
     margin: auto;
-    margin-top: 200px;
+    /*margin-top: 200px;
     display:flex; 
     justify-content:center; 
-    align-items:center;
+    align-items:center;*/
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    place-items: center;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     border: 2px solid black;
 }
 #gameContent{
@@ -28,6 +37,7 @@
     background-color: rgb(224, 224, 224);
     float: left;
     position: static;
+    left: 2%;
 }
 .hole{
     border: 1px solid black;
@@ -44,10 +54,12 @@
     display: inline-block;
 }
 #scoreList #score{
+    padding-left: 30px;
     font-size: 30px;
     height: 20px;
 }
-#scoreList #chageBestScore{
+#scoreList #bestScore{
+    padding-left: 30px;
     font-size: 20px;
     height: 20px;
 }
