@@ -62,9 +62,7 @@ function loadPage(requestId){
 }
 
 function ready(){
-    if (audio.paused) {
-        audio.play();
-    }
+    audio.play();
     requestId = 'GM-008';
     loadPage(requestId);
 }
@@ -106,14 +104,13 @@ function mainPage(){
 }
 
 function startGame(){
-    if (audio.paused) {
-        audio.play();
-    }
+    audio.play();
     requestId = 'GM-002';
     loadPage(requestId);
 }
 
 function gameOver(){
+
     for (var i = 0; i < holes.length; i++) {//두더지 클릭 못하게
         holes[i].removeEventListener('click', handleMoleClick);
     }
@@ -175,7 +172,7 @@ img.width = "150";
 img.height = "150";
 
 function randomHole() { // 번호 랜덤 생성
-
+    gameEnded = false;
     /*
     holes.forEach(function (hole) {
         hole.innerHTML = '';
