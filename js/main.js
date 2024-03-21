@@ -253,6 +253,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
 
             gameEnded = false;
             clicked = true;
+            audio.pause();
             moveMole();
 
         }
