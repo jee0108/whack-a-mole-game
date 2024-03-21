@@ -4,7 +4,9 @@ var clicked = false;
 var gameEnded = false;
 
 var audio = new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
+audio.autoplay = true;
 audio.loop = true;
+audio.play();
 
 var audio2 = new Audio('../sound/flying_pan.mp3'); // 두더지 잡았을때 효과음
 
@@ -37,8 +39,8 @@ if(bestScore === null || isNaN(bestScore)){
     bestScore = parseInt(bestScore);
 }
 
-var holes = document.querySelectorAll('.hole');
-var score = document.querySelector('#score');
+var holes = document.getElementsByClassName('hole');
+var score = document.getElementById('score');
 
 function loadPage(requestId){
 
@@ -172,7 +174,6 @@ img.width = "150";
 img.height = "150";
 
 function randomHole() { // 번호 랜덤 생성
-    gameEnded = false;
     /*
     holes.forEach(function (hole) {
         hole.innerHTML = '';
@@ -216,7 +217,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
             audio2.play();
 
             result += 100;
-            score.textContent = 'SCORE '+ result;
+            score.innerHTML = 'SCORE '+ result;
 
             if(result >= bestScore){
                 bestScore = result;
@@ -245,9 +246,11 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
                 }, 250);
                 
             }
+
             gameEnded = false;
             clicked = true;
             moveMole();
+
         }
     }
     /*
